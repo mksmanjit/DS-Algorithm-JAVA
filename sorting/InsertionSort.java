@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 /**
  *
- * This algorithm is not suitable for large data sets as its average and worst case time complexity is quite high.
- * Even if the list is already sorted it will take same time o(n^2)
+ * Insertion sort is efficient for small data values.
+ * Insertion sort is adaptive in nature, i.e. it is appropriate for data sets which are already partially sorted.
  *
  *  Time Complexity : O(n^2)
  *  Space Complexity: O(1)
@@ -14,20 +14,20 @@ import java.util.stream.Collectors;
  * --------------------------------------------
  * Analysis
  * ---------------------------------------------
- * Pass 1- Number of comparisons = (n-1)
- * Pass 2- Number of comparisons = (n-2)
- * Pass 3- Number of comparisons = (n-3)
+ * Pass 1- Number of comparisons = 1
+ * Pass 2- Number of comparisons = 2
+ * Pass 3- Number of comparisons = 3
  * ...
  * ...
- * Pass (n - 1)- Number of comparisons = (1)
+ * Pass (n)- Number of comparisons = (n)
  *
  * Now , calculating total number of comparison required to sort the array
- * (n-1) + (n-2) +  (n-3) + . . . 2 + 1
+ * 1+2+3+4 ...+ n
  * n (n-1)/2
  *
  * leading term in this is n^2, So time complexity is O(n^2)
  */
-public class BubbleSort {
+public class InsertionSort {
 
     public static void main(String[] args) {
         int[] unsortedList = {4, 5, 1, 2, 3, 7, 8, 9, 6};
@@ -42,12 +42,12 @@ public class BubbleSort {
     }
 
     public static void sort(int[] unsortedList) {
-        for (int i = 0; i < unsortedList.length; i++) {  // O(n)
-            for (int j = 0; j < unsortedList.length - i - 1; j++) { // O(n)
-                if (unsortedList[j] > unsortedList[j+1]) { // O(1)
+        for (int i = 1; i < unsortedList.length; i++) {  // O(n)
+            for (int j = i; j > 0; j--) { // O(n)
+                if (unsortedList[j] < unsortedList[j - 1]) { // O(1)
                     int temp = unsortedList[j];
-                    unsortedList[j] = unsortedList[j + 1];
-                    unsortedList[j + 1] = temp;
+                    unsortedList[j] = unsortedList[j - 1];
+                    unsortedList[j - 1] = temp;
                 }
             }
         }
