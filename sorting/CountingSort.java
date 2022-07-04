@@ -96,8 +96,9 @@ public class CountingSort {
             countArray[i] += countArray[i-1];
         }
 
-        // Build the output array
-        for(int i = 0; i < unsortedList.length; i++) { // O(n)
+        // Build the output array,in reverse order so that first value should come
+        // first in the output array.
+        for(int i = unsortedList.length - 1 ; i >= 0; i--) { // O(n)
             outputArray[countArray[unsortedList[i]] - 1] = unsortedList[i];
             --countArray[unsortedList[i]];
         }
