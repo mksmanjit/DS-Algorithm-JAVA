@@ -5,11 +5,12 @@ import java.util.stream.Collectors;
 
 /**
  *
- * This algorithm is suitable for large data sets as its best,average and worst complexity is O(nlogn).
- * Merge sort algorithm requires an additional memory space of 0(n) for the temporary array.
+ * Quick Sort in its general form is an in-place sort (i.e. it doesn’t require any extra storage) whereas merge sort
+ * requires O(N) extra storage, N denoting the array size which may be quite expensive
  *
- *  Time Complexity : O(nlogn), O(n) is for merging and logn is for depth of the tree.
- *  Space Complexity: O(n + logn), leading term is n, So O(n)
+ *  Time Complexity : Best = Θ(nlogn) and Average=Ω(nlogn) and Worst = O(n2)
+ *  O(n^2) - when list is already sorted in reverse order.
+ *  Space Complexity: O(1)
  *
  * --------------------------------------------
  * Analysis
@@ -31,7 +32,7 @@ import java.util.stream.Collectors;
  *
  * leading term in this is nlogn, So time complexity is O(nlogn)
  */
-public class MergeSort {
+public class QuickSort {
 
     public static void main(String[] args) {
         int[] unsortedList = {3,2,1};
@@ -51,55 +52,43 @@ public class MergeSort {
     }
 
     /**
-     * Time Complexity: O(logn), which is the depth of the tree and each step we are reducing it by half.
-     * Space Complexity:O(logn), which is the depth of the stack.
+     * Time Complexity: Best and Average is O(nlogn) and Worst is O(n^2)
+     * Space Complexity:O(1), No extra space used.
      *
      * @param unsortedList
      * @param l
      * @param r
      */
-    public static void sort(int[] unsortedList, int l, int r) {
+    public static void sort(int[] unsortedList, int l, int r) { // O(logn)
         if(l >= r) return;
-        int m = (l + r) / 2;
-        sort(unsortedList, l, m);
+        int m = partition(unsortedList, l ,r);
+        sort(unsortedList, l, m-1);
         sort(unsortedList, m + 1, r);
-        merge(unsortedList, l, m, r);
     }
 
     /**
-     * Time Complexity: O(l+r), which is equal to O(n) as we are dividing the list and then merging.
-     * Space Complexity: O(l+r), which is equal to O(n) as we are dividing the list from the main list.
+     * Time Complexity: O(n) we are iterating over n-1 elements.
+     * Space Complexity: O(1), No extra space used.
      *
      * @param unsortedList
      * @param l
-     * @param m
      * @param r
      */
-    public static void merge(int[] unsortedList, int l, int m, int r) {
-        int lSize = m - l + 1;
-        int rSize = r - m;
-        int[] leftList = new int[lSize + 1];
-        int[] rightList = new int[rSize + 1];
-
-        for(int i = 0;i<lSize;i++) { // O(l) Where l is the left list size
-            leftList[i] = unsortedList[l + i];
-        }
-        leftList[leftList.length - 1] = Integer.MAX_VALUE;
-
-        for(int i = 0;i<rSize;i++) { // O(r) Where r is the left list size
-            rightList[i] = unsortedList[m+i+1];
-        }
-        rightList[rightList.length - 1] = Integer.MAX_VALUE;
-
-        int i = 0,j=0;
-        for (int k = l; k <= r;k++) { // O(l+r) Where l,r is the left and right list size
-            if(leftList[i] <= rightList[j]) {
-                unsortedList[k] = leftList[i];
+    public static int partition(int[] unsortedList, int l, int r) { // O(n)
+        int lastNumber = unsortedList[r];
+        int i = l - 1;
+        for (int j = l; j < r ; j++) { // O(n)
+            if (lastNumber >= unsortedList[j]) {
                 i++;
-            } else {
-                unsortedList[k] = rightList[j];
-                j++;
+                int temp = unsortedList[i];
+                unsortedList[i] = unsortedList[j];
+                unsortedList[j] = temp;
             }
         }
+        int temp = unsortedList[i + 1];
+        unsortedList[i + 1] = unsortedList[r];
+        unsortedList[r] = temp;
+
+        return i + 1;
     }
 }
