@@ -6,9 +6,11 @@ import java.util.stream.Collectors;
 /**
  *
  * Quick Sort in its general form is an in-place sort (i.e. it doesn’t require any extra storage) whereas merge sort
- * requires O(N) extra storage, N denoting the array size which may be quite expensive
+ * requires O(N) extra storage, N denoting the array size which may be quite expensive.
  *
- *  Time Complexity : Best = Θ(nlogn) and Average=Ω(nlogn) and Worst = O(n2)
+ * Quick sort take O(n^2) when the list is ascending order or descending order or all number are same.
+ *
+ *  Time Complexity : Best = Ω(nlogn) and Average=Θ(nlogn) and Worst = O(n2)
  *  O(n^2) - when list is already sorted in reverse order.
  *  Space Complexity: O(1)
  *
