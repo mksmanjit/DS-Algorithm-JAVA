@@ -6,8 +6,7 @@ DS Algorithm in JAVA
    	1) Min Heap
 	2) Max Heap
 3) Sorting Algorithm
-
-    	1) Insertion Sort
+	1) Insertion Sort
 	2) Merge Sort
 	3) Quick Sort
 	4) Heap Sort
