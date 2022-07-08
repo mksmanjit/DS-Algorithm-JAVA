@@ -50,8 +50,8 @@ public class MaxHeap {
 
 
     public static void maxHeap(Heap heap) {
-        int lastNonLeafNode = heap.getMaxSize()/2; // totalElement/2 gives us the last non leaf element in a binary tree.
-        for(int i = lastNonLeafNode; i >0 ;i--) {
+        int lastNonLeafNodeIndex = heap.getMaxSize()/2 - 1; // totalElement/2 gives us the last non leaf element in a binary tree.
+        for(int i = lastNonLeafNodeIndex; i >=0 ;i--) {
             maxHeapify(heap, i);
         }
 
@@ -72,7 +72,7 @@ public class MaxHeap {
         arr[0] = arr[heap.getSize() - 1];
         arr[heap.getSize() - 1] = max;
         heap.setSize(heap.getSize() - 1);
-        maxHeapify(heap, 1);
+        maxHeapify(heap, 0);
         return max;
     }
 
@@ -130,7 +130,7 @@ public class MaxHeap {
         }
 
         arr[position] = value;
-        maxHeapify(heap,position + 1); // O(logn)
+        maxHeapify(heap,position); // O(logn)
     }
 
     /**
@@ -141,19 +141,19 @@ public class MaxHeap {
      */
     public static void maxHeapify(Heap heap, int i) {
         int arr[] = heap.getElements();
-        int left = 2*i; // Used to find left node in a binary tree.
-        int right = 2*i + 1; // Used to find right node in a binary tree.
+        int left = 2*i + 1; // Used to find left node in a binary tree.
+        int right = 2*i + 2; // Used to find right node in a binary tree.
         int largest = i;
-        if(left <= heap.getSize() && arr[left - 1] > arr[i - 1]) {
+        if(left < heap.getSize() && arr[left] > arr[i]) {
             largest = left;
         }
-        if(right <= heap.getSize() && arr[right - 1] > arr[largest - 1]) {
+        if(right < heap.getSize() && arr[right] > arr[largest]) {
             largest = right;
         }
         if(largest != i) {
-            int temp = arr[i - 1];
-            arr[i-1] = arr[largest-1];
-            arr[largest-1] = temp;
+            int temp = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = temp;
             maxHeapify(heap, largest);
         }
     }

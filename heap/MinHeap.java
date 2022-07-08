@@ -50,8 +50,8 @@ public class MinHeap {
 
 
     public static void minHeap(Heap heap) {
-        int lastNonLeafNode = heap.getMaxSize()/2; // totalElement/2 gives us the last non leaf element in a binary tree.
-        for(int i = lastNonLeafNode; i >0 ;i--) {
+        int lastNonLeafNode = heap.getMaxSize()/2 - 1; // totalElement/2 gives us the last non leaf element in a binary tree.
+        for(int i = lastNonLeafNode; i >=0 ;i--) {
             minHeapify(heap, i);
         }
 
@@ -72,7 +72,7 @@ public class MinHeap {
         arr[0] = arr[heap.getSize() - 1];
         arr[heap.getSize() - 1] = max;
         heap.setSize(heap.getSize() - 1);
-        minHeapify(heap, 1);
+        minHeapify(heap, 0);
         return max;
     }
 
@@ -92,7 +92,7 @@ public class MinHeap {
         }
 
         arr[position] = value;
-        minHeapify(heap,position + 1); // O(logn)
+        minHeapify(heap,position); // O(logn)
 
     }
 
@@ -141,19 +141,19 @@ public class MinHeap {
      */
     public static void minHeapify(Heap heap, int i) {
         int arr[] = heap.getElements();
-        int left = 2*i; // Used to find left node in a binary tree.
-        int right = 2*i + 1; // Used to find right node in a binary tree.
+        int left = 2*i + 1; // Used to find left node in a binary tree.
+        int right = 2*i + 2; // Used to find right node in a binary tree.
         int smallest = i;
-        if(left <= heap.getSize() && arr[left - 1] < arr[i - 1]) {
+        if(left < heap.getSize() && arr[left] < arr[i]) {
             smallest = left;
         }
-        if(right <= heap.getSize() && arr[right - 1] < arr[smallest - 1]) {
+        if(right < heap.getSize() && arr[right] < arr[smallest]) {
             smallest = right;
         }
         if(smallest != i) {
-            int temp = arr[i - 1];
-            arr[i-1] = arr[smallest-1];
-            arr[smallest-1] = temp;
+            int temp = arr[i];
+            arr[i] = arr[smallest];
+            arr[smallest] = temp;
             minHeapify(heap, smallest);
         }
     }
