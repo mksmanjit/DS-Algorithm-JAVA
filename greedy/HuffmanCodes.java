@@ -53,11 +53,11 @@ public class HuffmanCodes {
         node = new Node(5, 'c');
         priorityQueue.offer(node);
         node = new Node(5, 'd');
-        priorityQueue.offer(node);
+        priorityQueue.offer(node); // O(n) for creating min heap.
 
-        while (priorityQueue.size() > 1) {
-            Node minNode1 = priorityQueue.poll();
-            Node minNode2 = priorityQueue.poll();
+        while (priorityQueue.size() > 1) { // O(n) for iterating over all the unique characters.
+            Node minNode1 = priorityQueue.poll(); // O(logn)
+            Node minNode2 = priorityQueue.poll(); // O(logn)
             Node newNode = new Node(minNode1.frequency + minNode2.frequency, ' ');
             newNode.right = minNode1.frequency > minNode2.frequency ? minNode1 : minNode2;
             newNode.left = minNode1.frequency > minNode2.frequency ? minNode2 : minNode1;
