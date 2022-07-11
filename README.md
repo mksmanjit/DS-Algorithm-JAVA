@@ -15,8 +15,8 @@ DS Algorithm in JAVA
 	7) Counting Sort
 	8) Radix Sort
 4) Greey Algorithm
-	1) Huffman Codes
-	2) Kirchoff Theorem
+	1) Huffman Codes / Optimal Merge Pattern
+	2) Job Sequencing with deadlines
 	3) Minimum Spanning Tree(MST)
 		1) Prims Without Min Heap
 		2) Prims With Min Heap
