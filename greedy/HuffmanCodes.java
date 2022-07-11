@@ -16,6 +16,10 @@ import java.util.Queue;
  * character is not the prefix of code assigned to any other character. This is how Huffman Coding
  * makes sure that there is no ambiguity when decoding the generated bitstream.
  *
+ * Note: We can use same algorithm for the Optimal merge Pattern - Optimal way to merge two files.
+ * If we have two files of sizes m and n, the total computation time will be m+n.
+ * Here, we use the greedy strategy by merging the two smallest size files among all the files present.
+ *
  * Time Complexity: O(nlogn)
  * O(n) time the unique character and O(logn) time to extract min.
  */
