@@ -20,9 +20,8 @@ DS Algorithm in JAVA
 	3) Minimum Spanning Tree(MST)
 		1) Prims Without Min Heap
 		2) Prims With Min Heap
-		3) Kruskal Algorithm
-		4) Disjoint Sets
-		5) Kruskal algorithm using Disjoint Set
+		3) Disjoint Sets
+		4) Kruskal algorithm using Disjoint Set
 5) Sorted Path Algorithm
 	1) Dijkstra Algorithm
 	2) Bellman Ford Algorithm
