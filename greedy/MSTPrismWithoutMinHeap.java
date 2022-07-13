@@ -9,7 +9,10 @@ import java.util.Arrays;
  *
  * Prism algorithm grow like a tree where krushkal algorithm grow like a forest.
  *
- * Time Complexity - O(n^2) where n is the total number of vertex.
+ * Time Complexity - O(V^2) where V is the total number of vertex.
+ *
+ * This implementation is better when your graph is dense means E=v^2, for sparse graph where
+ * very less number of edges are there i.e same number as Vertex E=V then Prism using Min Heap is better.
  *
  */
 public class MSTPrismWithoutMinHeap {
@@ -45,7 +48,7 @@ public class MSTPrismWithoutMinHeap {
     }
 
     /**
-     * Time Complexity - O(n^2), where n is vertex.
+     * Time Complexity - O(V^2), where V is vertex.
      * @param adjacencyWeightMatrix
      * @param mstNodes
      * @return
@@ -54,11 +57,11 @@ public class MSTPrismWithoutMinHeap {
         int minCost = 0;
         int[] near = new int[adjacencyWeightMatrix.length];
         Arrays.fill(near, Integer.MAX_VALUE);
-        updateNearTable(adjacencyWeightMatrix, near, 1); // O(n)
+        updateNearTable(adjacencyWeightMatrix, near, 1); // O(V)
         near[1] = 0;
-        for (int i = 1; i < adjacencyWeightMatrix.length - 1; i++) { // O(n)
+        for (int i = 1; i < adjacencyWeightMatrix.length - 1; i++) { // O(V)
             // Get the vertex with the min value
-            int minIndex = getMinIndex(adjacencyWeightMatrix, near); // O(n)
+            int minIndex = getMinIndex(adjacencyWeightMatrix, near); // O(V)
             // Set the value ins the mst.
             mstNodes[i-1][0] = near[minIndex];
             mstNodes[i-1][1] =  minIndex;
@@ -67,7 +70,7 @@ public class MSTPrismWithoutMinHeap {
             // Mark the vertex, so that it will not get considered again.
             near[minIndex] = 0;
             // Update the Near table using newly vertex included in mst.
-            updateNearTable(adjacencyWeightMatrix, near, minIndex); // O(n)
+            updateNearTable(adjacencyWeightMatrix, near, minIndex); // O(V)
         }
 
         return minCost;
