@@ -9,7 +9,7 @@ package greedy;
  *
  *  Union Time Complexity - O(1)
  *  Find Time Complexity - O(1)
- *  Create Set - O(n)
+ *  Create Set - O(1) for adding one item
  */
 public class DisJointSet {
 
@@ -20,22 +20,26 @@ public class DisJointSet {
     public DisJointSet(int size) {
         this.disJointSet = new int[size];
         this.rank = new int[size];
+        createSet(size);
     }
 
     public static void main(String[] args) {
         DisJointSet disJointSetByRank = new DisJointSet(10);
-        for(int i = 0 ;i < disJointSetByRank.disJointSet.length ; i++) {
-            // Initially all elements are parent to itself.
-            disJointSetByRank.disJointSet[i] = i;
-            // In the starting height of the tree is 0.
-            disJointSetByRank.rank[i] = 0;
-        }
         for(int i = 1 ;i < disJointSetByRank.disJointSet.length ; i++) {
             if(i%2 == 0) {
                 disJointSetByRank.union(i, i - 2);
                 System.out.println("Find " + i + ">>" + disJointSetByRank.find(i));
                 System.out.println("Find " + (i -2) + ">>" + disJointSetByRank.find(i));
             }
+        }
+    }
+
+    private void createSet(int  size) {
+        for(int i = 0; i < size ; i++) {
+            // Initially all elements are parent to itself.
+            disJointSet[i] = i;
+            // In the starting height of the tree is 0.
+            rank[i] = 0;
         }
     }
 
@@ -60,16 +64,10 @@ public class DisJointSet {
     /**
      * Time Complexity : O(1)
      *
-     * @param x
-     * @param y
+     * @param parent1
+     * @param parent2
      */
-    public void union(int x, int y) {
-        int parent1 = find(x);
-        int parent2 = find(y);
-        if(parent1 == parent2) {
-            // Both belong to same parent no need of union.
-            return;
-        }
+    public void union(int parent1, int parent2) {
         if(rank[parent1] > rank[parent2]) {
             disJointSet[parent2] = parent1;
             // No need to increase rank in this case as height will not change.
