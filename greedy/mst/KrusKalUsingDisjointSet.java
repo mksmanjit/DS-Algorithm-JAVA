@@ -1,4 +1,6 @@
-package greedy;
+package greedy.mst;
+
+import greedy.DisJointSet;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
