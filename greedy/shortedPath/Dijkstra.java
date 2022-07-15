@@ -82,7 +82,7 @@ public class Dijkstra {
     }
 
     private static void relaxEdges(int[][] weightedPathMatrix, Node[] destinations, Set<Integer> relaxedNodes, Queue<Node> queue, int src, int dest) {
-        if(!relaxedNodes.contains(dest) && weightedPathMatrix[src][dest] > 0 && destinations[dest].getWeight() > (destinations[src].getWeight() + weightedPathMatrix[src][dest])) {
+        if(!relaxedNodes.contains(dest) && weightedPathMatrix[src][dest] != 0 && destinations[dest].getWeight() > (destinations[src].getWeight() + weightedPathMatrix[src][dest])) {
             destinations[dest] = new Node(dest, destinations[src].getWeight() + weightedPathMatrix[src][dest]);
             queue.offer(destinations[dest]); // O(logV)
         }
