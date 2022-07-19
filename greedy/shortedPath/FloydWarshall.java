@@ -16,16 +16,16 @@ package greedy.shortedPath;
 public class FloydWarshall {
     public static void main(String[] args) {
 //        long[][] weightedPathMatrix = {
-//                {Integer.MAX_VALUE, 1, Integer.MAX_VALUE, 5},
-//                {1, Integer.MAX_VALUE, 2, Integer.MAX_VALUE},
-//                {Integer.MAX_VALUE, 2, Integer.MAX_VALUE, 1},
-//                {5, Integer.MAX_VALUE, 1, Integer.MAX_VALUE},
+//                {0, 1, Integer.MAX_VALUE, 5},
+//                {1, 0, 2, Integer.MAX_VALUE},
+//                {Integer.MAX_VALUE, 2, 0, 1},
+//                {5, Integer.MAX_VALUE, 1, 0},
 //        };
         long[][] weightedPathMatrix = {
-                {Integer.MAX_VALUE, 11, 1, 6},
-                {11, Integer.MAX_VALUE, 7, 3},
-                {1, 7, Integer.MAX_VALUE, 2},
-                {6, 3, 2, Integer.MAX_VALUE},
+                {0, 11, 1, 6},
+                {11, 0, 7, 3},
+                {1, 7, 0, 2},
+                {6, 3, 2, 0},
         };
         long[][] allPairShortestPath = allPairShortestPath(weightedPathMatrix);
         for (int i = 0; i < allPairShortestPath.length; i++) {
@@ -47,11 +47,9 @@ public class FloydWarshall {
         for (int i = 0; i < weightedPathMatrix1.length; i++) { // O(V)
             for (int j = 0; j < weightedPathMatrix1.length; j++) { // O(V)
                 for (int k = 0; k < weightedPathMatrix1.length; k++) { // O(V)
-                    if (j == k) continue;
+                    weightedPathMatrix2[j][k] = weightedPathMatrix1[j][k]; // O(1)
                     if (weightedPathMatrix1[j][k] > (weightedPathMatrix1[j][i] + weightedPathMatrix1[i][k])) { // O(1)
                         weightedPathMatrix2[j][k] = weightedPathMatrix1[j][i] + weightedPathMatrix1[i][k];
-                    } else {
-                        weightedPathMatrix2[j][k] = weightedPathMatrix1[j][k]; // O(1)
                     }
                 }
             }
