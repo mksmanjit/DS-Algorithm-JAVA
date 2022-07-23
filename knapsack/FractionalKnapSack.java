@@ -8,6 +8,7 @@ import java.util.Queue;
  * capacity W to get the maximum total value in the knapsack.
  *
  * In the 0-1 Knapsack problem, we are not allowed to break items. We either take the whole item or don’t take it.
+ * But in this problem we can break items.
  *
  * Time Complexity - O(nlogn)
  * Space Complexity - O(1)
