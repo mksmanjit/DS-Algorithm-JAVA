@@ -34,5 +34,28 @@ DS Algorithm in JAVA
 	3) SubSet Sum using Recursion/Bottom up approach. (https://github.com/mksmanjit/DS-Algorithm-JAVA/blob/main/dynamicProgramming/SubSetSum.java)
 	4) Travelling Saleman problem
 7) Knapsack
-    1) Fractional Knapsack
-	2) 0/1 Knapsack
+    1) Fractional Knapsack (https://github.com/mksmanjit/DS-Algorithm-JAVA/blob/main/knapsack/FractionalKnapSack.java)
+	2) 0/1 Knapsack (https://github.com/mksmanjit/DS-Algorithm-JAVA/blob/main/knapsack/ZeroOneKnapSack.java)
+
+Searching And Sorting Algorithm Time Complexity
+-----------------------------------------------
+
+![image](https://user-images.githubusercontent.com/19969093/180703866-ca95564a-9a7a-418c-8e5a-f03e5fee19f3.png)
+
+Shortest Path Algorithm Time Complexity
+----------------------------------------------
+
+![image](https://user-images.githubusercontent.com/19969093/180705042-6fe02805-398c-4c42-a330-9c9d2ef17e80.png)
+
+Minimum Spanning Tree
+-----------------------------------------------
+
+![image](https://user-images.githubusercontent.com/19969093/180707627-ac883c77-ba5e-4ec2-a95c-7853412c588e.png)
+
+
+Dynamic Programming 
+------------------------------------------------
+
+![image](https://user-images.githubusercontent.com/19969093/180708607-9cfdcbd8-b698-4a39-a6ed-3c3f419f92a4.png)
+
+
