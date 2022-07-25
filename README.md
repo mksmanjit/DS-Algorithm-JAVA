@@ -36,7 +36,9 @@ DS Algorithm in JAVA
 7) Knapsack
     1) Fractional Knapsack (https://github.com/mksmanjit/DS-Algorithm-JAVA/blob/main/knapsack/FractionalKnapSack.java)
 	2) 0/1 Knapsack (https://github.com/mksmanjit/DS-Algorithm-JAVA/blob/main/knapsack/ZeroOneKnapSack.java)
-
+8) Traversal
+    1) DFS - Depth First Search (https://github.com/mksmanjit/DS-Algorithm-JAVA/blob/main/traversal/DFS.java)
+    2) BFS - Breadth First Search (https://github.com/mksmanjit/DS-Algorithm-JAVA/blob/main/traversal/BFS.java)
 Searching And Sorting Algorithm Time Complexity
 -----------------------------------------------
 
