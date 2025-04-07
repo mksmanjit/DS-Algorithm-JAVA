@@ -56,7 +56,7 @@ public class BellmanFord {
         Arrays.fill(destinations2, Integer.MAX_VALUE); // O(V)
         destinations2[0] = 0;
         int num = 0;
-        while (num < weightedPathMatrix.length) { // O(V-1)
+        while (num < weightedPathMatrix.length - 1) { // O(V-1)
             for (int i = 0; i < weightedPathMatrix.length; i++) { // O(E)
                 for (int j = 0; j < weightedPathMatrix.length; j++) {
                     if (weightedPathMatrix[i][j] != 0 && destinations1[j] > (destinations1[i] + weightedPathMatrix[i][j])) {
